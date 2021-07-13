@@ -15,11 +15,24 @@
       <div class="tab-pane fade show active" id="Usuarios" role="tabpanel" aria-labelledby="Usuarios-tab">
         <!-- Seleccionado ============================================================================-->
         <div class="row">
-          <form>
-            <input class=" form-control" name="buscarCategoria" id="buscarCategoria"
-              placeholder="Buscar Categoria" [(ngModel)]='buscar'>
-          </form>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 mt-2 ">
+            <form [formGroup]='form'>
+              <label for="select">Ver Asignaturas por:</label>
+              <select name="select" id="select" class="form-select" formControlName='cuatrimestre' (change)="categoria()">
+                  <option value="1">Cuatrimestre 1</option>
+                  <option value="2">Cuatrimestre 2</option>
+                  <option value="3">Cuatrimestre 3</option>
+                  <option value="4">Cuatrimestre 4</option>
+                  <option value="5">Cuatrimestre 5</option>
+                  <option value="6">Cuatrimestre 6</option>
+                  <option value="7">Cuatrimestre 7</option>
+                  <option value="0">Todas las asignatura</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6 mt-3">
             <!-- Select -->
             <div>
               <table class="table">
@@ -47,7 +60,7 @@
               </table>
             </div>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 mt-3">
 
             <table class="table">
               <thead>
@@ -84,7 +97,7 @@
               <th>Codigo</th>
               <th>Asiganatura</th>
               <th>Credito</th>
-              <th> </th>
+              <th>Calificacion obtenida</th>
             </tr>
           </thead>
           <tbody>
@@ -92,11 +105,21 @@
               <td>{{asig.codigo}}</td>
               <td>{{asig.Asignatura}}</td>
               <td>{{asig.credito}}</td>
+              <td> 
+                <select name="" id="" class=" form-select-sm">
+                  <option value="4">A</option>
+                  <option value="3">B</option>
+                  <option value="2">C</option>
+                  <option value="0">F</option>
+                </select>
+              </td>
             </tr>
           </tbody>
           <tfoot>
-
-          </tfoot>
+            <tr>
+              <td>Indice:</td>
+              <td colspan="4">{{indice}}</td>
+            </tr>
         </table>
       </div>
     </div>
