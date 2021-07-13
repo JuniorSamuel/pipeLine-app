@@ -1,0 +1,105 @@
+<div class="container mt-4">
+
+  <div>
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="Usuarios-tab" data-bs-toggle="tab" data-bs-target="#Usuarios" type="button"
+          role="tab" aria-controls="Usuarios" aria-selected="true">Seleccionar</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Poster-tab" data-bs-toggle="tab" data-bs-target="#Poster" type="button" role="tab"
+          aria-controls="Poster" aria-selected="false">Calcular</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="Usuarios" role="tabpanel" aria-labelledby="Usuarios-tab">
+        <!-- Seleccionado ============================================================================-->
+        <div class="row">
+          <form>
+            <input class=" form-control" name="buscarCategoria" id="buscarCategoria"
+              placeholder="Buscar Categoria" [(ngModel)]='buscar'>
+          </form>
+          <div class="col-12 col-md-6">
+            <!-- Select -->
+            <div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Codigo</th>
+                    <th>Asiganatura</th>
+                    <th>Credito</th>
+                    <th> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let asig of asignatura | filtro: buscar; index as i'>
+                    <td>{{asig.codigo}}</td>
+                    <td>{{asig.Asignatura}}</td>
+                    <td>{{asig.credito}}</td>
+                    <td>
+                      <button class="btn btn-dark" (click)='agregar(i)'>Agregar</button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Codigo</th>
+                  <th>Asiganatura</th>
+                  <th>Credito</th>
+                  <th> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let asig of seleccionado; index as i'>
+                  <td>{{asig.codigo}}</td>
+                  <td>{{asig.Asignatura}}</td>
+                  <td>{{asig.credito}}</td>
+                  <td>
+                    <button class="btn btn-danger" (click)='quitar(i)'>Quitar</button>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="Poster" role="tabpanel" aria-labelledby="Poster-tab">
+
+        <!-- Calculat ------------------------------------------------------------------->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Asiganatura</th>
+              <th>Credito</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let asig of seleccionado'>
+              <td>{{asig.codigo}}</td>
+              <td>{{asig.Asignatura}}</td>
+              <td>{{asig.credito}}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
